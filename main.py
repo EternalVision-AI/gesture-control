@@ -10,11 +10,11 @@ def main():
     global battery_status
 
 
-    cap = cv2.VideoCapture('./gestures_final_test.mp4')
+    cap = cv2.VideoCapture(0)
     bg =cv2.imread('./bg.png')
 
     print()
-    gesture_detector = GestureRecognition(use_static_image_mode=False, min_detection_confidence=0.7, min_tracking_confidence=0.7)
+    gesture_detector = GestureRecognition(use_static_image_mode=False, min_detection_confidence=0.97, min_tracking_confidence=0.97)
     gesture_buffer = GestureBuffer(buffer_len=10)
 
 
@@ -28,6 +28,7 @@ def main():
     time.sleep(3)
 
     while True:
+        time.sleep(0.02)
         count += 1
         fps = cv_fps_calc.get()
 
@@ -37,7 +38,7 @@ def main():
         if not rect:
             break
 
-        if count%20 == 0:
+        if count%30 == 0:
             debug_image, gesture_id = gesture_detector.recognize(image, number, mode)
             gesture_buffer.add_gesture(gesture_id)
             debug_image = gesture_detector.draw_info(debug_image, fps, mode, number)

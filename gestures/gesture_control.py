@@ -32,11 +32,11 @@ def action_func(hand_sign):
         time.sleep(0.2)
 
     if 'Left' in hand_sign:                  # left slide
-        pyautogui.moveTo(round(screen_width*2/3),round( screen_height/2)) # move to start point
+        pyautogui.moveTo(round(screen_width*3/4),round( screen_height/2)) # move to start point
         pyautogui.dragRel(-screen_width*2/3, 0, duration=1)  # move left to end point
         time.sleep(0.5)
     if 'Right' in hand_sign:                  # right slide
-        pyautogui.moveTo(round(screen_width*1/3),round( screen_height/2)) # move to start point
+        pyautogui.moveTo(round(screen_width*1/4),round( screen_height/2)) # move to start point
         pyautogui.dragRel(screen_width*2/3, 0, duration=1)  # move left to end point
         time.sleep(0.5)
     
